@@ -2,13 +2,14 @@ package in.sesslynjohnson.minimal.service;
 
 import in.sesslynjohnson.minimal.dao.UserDAO;
 import in.sesslynjohnson.minimal.model.User;
+import in.sesslynjohnson.minimal.validation.UserValidator;
 
 public class UserService {
 
 	public User[] getAll() {
-		
+
 		UserDAO userDao = new UserDAO();
-		
+
 		User[] userList = userDao.findAll();
 
 		for (int i = 0; i < userList.length; i++) {
@@ -18,18 +19,17 @@ public class UserService {
 		return userList;
 	}
 
-	public void create() {
-
-		User newUser = new User();
-		newUser.setId(151220);
-		newUser.setFirstName("Sesslyn");
-		newUser.setLastName("Johnson");
-		newUser.setEmail("sesslyn2004@gmail.com");
-		newUser.setPassword("Sess@1512");
-		newUser.setActive(true);
-
+	public void create(User newUser) throws Exception{
+		UserValidator.Validate(newUser);
 		UserDAO userDao = new UserDAO();
 		userDao.create(newUser);
+	}
+
+	public void update() {
+		User updateUser = new User();
+		UserDAO userDao = new UserDAO();
+		userDao.update(2, updateUser);
+
 	}
 
 }

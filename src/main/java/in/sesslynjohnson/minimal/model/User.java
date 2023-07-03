@@ -1,7 +1,14 @@
 package in.sesslynjohnson.minimal.model;
 
 public class User {
+	
     String firstName;
+    String lastName;
+    String email;
+    String password;
+    int id;
+    boolean isActive = true;
+    
     public String getFirstName() {
 		return firstName;
 	}
@@ -38,21 +45,14 @@ public class User {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	public String fullName() {
+    	return firstName.concat(" ").concat(lastName);
+    }
 	
-	String lastName;
     @Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password
 				+ ", id=" + id + ", isActive=" + isActive + "]";
 	}
-
-	String email;
-    String password;
-    int id;
-    boolean isActive;
-    
-    public String fullName() {
-    	return firstName.concat(" ").concat(lastName);
-    }
-    
+ 
 }

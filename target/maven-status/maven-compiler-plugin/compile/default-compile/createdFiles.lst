@@ -1,0 +1,6 @@
+in\sesslynjohnson\minimal\App.class
+in\sesslynjohnson\minimal\dao\UserList.class
+in\sesslynjohnson\minimal\validation\UserValidator.class
+in\sesslynjohnson\minimal\dao\UserDAO.class
+in\sesslynjohnson\minimal\service\UserService.class
+in\sesslynjohnson\minimal\model\User.class
