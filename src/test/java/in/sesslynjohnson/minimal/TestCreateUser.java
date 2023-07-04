@@ -14,7 +14,6 @@ public class TestCreateUser {
 	@Test
     public void testCreateUserWithValidataInput(){
     	UserService userService = new UserService();
-
  		User newUser = new User();
  		newUser.setId(1);
  		newUser.setFirstName("Sesslyn");
@@ -24,9 +23,7 @@ public class TestCreateUser {
  		newUser.setActive(true);
         assertDoesNotThrow(()->{
     	   userService.create(newUser);
-        });
- 		
- 		
+        });	
      }
 	@Test
 	public void testCreateUserWithInvalidataInput() {

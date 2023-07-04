@@ -13,7 +13,6 @@ public class UserDAO {
 	 * 
 	 * @param newUser
 	 */
-	
 	public void create(User newUser) {
 		User[] arr = UserList.listOfUsers;
 		for (int i = 0; i < arr.length; i++) {
