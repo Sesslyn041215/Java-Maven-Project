@@ -53,7 +53,7 @@ public class TestCreateTask {
 			assertTrue(expectedMessage.equals(actualMessage));
 		}	
 	    @Test
-		public void testCreateUserWithFirstNameEmpty() {
+		public void testCreateTaskWithNameEmpty() {
 	    	TaskService taskService = new TaskService();
 	    	Task newTask = new Task();
 	 		newTask.setId(1);
@@ -87,7 +87,7 @@ public class TestCreateTask {
 			assertTrue(expectedMessage.equals(actualMessage));
 		}	
 	    @Test
-		public void testCreateUserWithDueDateEmpty() {
+		public void testCreateTaskWithDueDateEmpty() {
 	    	TaskService taskService = new TaskService();
 	    	Task newTask = new Task();
 	 		newTask.setId(1);
@@ -104,7 +104,7 @@ public class TestCreateTask {
 			assertTrue(expectedMessage.equals(actualMessage));
 		}
 	    @Test
-		public void testCreateUserWithDueDatePassedDate() {
+		public void testCreateTaskWithDueDatePassedDate() {
 	    	TaskService taskService = new TaskService();
 	    	Task newTask = new Task();
 	 		newTask.setId(1);
@@ -121,7 +121,7 @@ public class TestCreateTask {
 			assertTrue(expectedMessage.equals(actualMessage));
 		}
 	    @Test
-		public void testCreateUserWithDueDateParseDate() {
+		public void testCreateTaskWithDueDateParseDate() {
 	    	TaskService taskService = new TaskService();
 	    	Task newTask = new Task();
 	 		newTask.setId(1);
@@ -132,7 +132,24 @@ public class TestCreateTask {
 			Exception exception = assertThrows(Exception.class,()->{
 				taskService.create(newTask);
 			});
-			String expectedMessage = "Invalid date format. Expected format: yyyy-MM-dd";
+			String expectedMessage = "Invalid date format or Invalid Date";
+			String actualMessage = exception.getMessage();
+			
+			assertTrue(expectedMessage.equals(actualMessage));
+		}
+	    @Test
+		public void testCreateTaskWithDueDateInvalidDate() {
+	    	TaskService taskService = new TaskService();
+	    	Task newTask = new Task();
+	 		newTask.setId(1);
+	 		newTask.setDueDate("2023-09-31");
+	 		newTask.setName("Practice");
+	 		newTask.setActive(true);
+			
+			Exception exception = assertThrows(Exception.class,()->{
+				taskService.create(newTask);
+			});
+			String expectedMessage = "Invalid date format or Invalid Date";
 			String actualMessage = exception.getMessage();
 			
 			assertTrue(expectedMessage.equals(actualMessage));

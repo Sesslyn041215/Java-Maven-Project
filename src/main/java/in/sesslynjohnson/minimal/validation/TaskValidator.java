@@ -3,7 +3,7 @@ package in.sesslynjohnson.minimal.validation;
 import java.lang.Exception;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 import in.sesslynjohnson.minimal.exception.ValidationException;
 import in.sesslynjohnson.minimal.model.Task;
@@ -23,10 +23,14 @@ public class TaskValidator {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dueDate = LocalDate.parse(date, formatter);
         
+        LocalDate.parse(date,
+                DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT));
+        
         LocalDate currentDate = LocalDate.now();
         if (dueDate.equals(currentDate) || dueDate.isBefore(currentDate)) {
             throw new ValidationException("Due date should be in the future");
         }
-		
+        
+       
     }
 }
