@@ -1,22 +1,18 @@
 package in.sesslynjohnson.minimal.service;
 
 import java.time.format.DateTimeParseException;
-
 import in.sesslynjohnson.minimal.dao.TaskDAO;
 import in.sesslynjohnson.minimal.exception.ValidationException;
 import in.sesslynjohnson.minimal.model.Task;
 import in.sesslynjohnson.minimal.validation.TaskValidator;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
+import java.util.Set;
 
 public class TaskService {
-	public Task[] getAll() {
+	public Set<Task> getAll() {
 		TaskDAO taskDao = new TaskDAO();
-		Task[] taskList = taskDao.findAll();
-		for (int i = 0; i < taskList.length; i++) {
-			System.out.println(taskList[i]);
+		Set<Task> taskList = taskDao.findAll();
+		for (Task task : taskList) {
+			System.out.println(task);
 		}
 		return taskList;
 	}
@@ -36,7 +32,7 @@ public class TaskService {
 	public void update(Task updateTask) throws Exception {
 		TaskValidator.Validate(updateTask);
 		TaskDAO taskDao = new TaskDAO();
-		taskDao.update(2, updateTask);
+		taskDao.update(updateTask);
 	}
 
 	public void delete(int taskId) {

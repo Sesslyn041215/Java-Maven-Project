@@ -12,9 +12,9 @@ public class App {
 			UserService userService = new UserService();
 
 			User newUser = new User();
-			newUser.setId(1);
 			newUser.setFirstName("Sesslyn");
 			newUser.setLastName("Johnson");
+			newUser.setId(15);
 			newUser.setEmail("sesslyn2004@gmail.com");
 			newUser.setPassword("Sess@1512");
 			newUser.setActive(true);

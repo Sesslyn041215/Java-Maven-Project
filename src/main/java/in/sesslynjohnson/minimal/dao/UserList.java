@@ -1,9 +1,11 @@
 package in.sesslynjohnson.minimal.dao;
 
-import in.sesslynjohnson.minimal.model.User;
+import java.util.HashSet;
+import java.util.Set;
 
-public class UserList {
-	
-	public static User[] listOfUsers = new User[10];
-	
+import in.sesslynjohnson.minimal.model.User;
+import in.sesslynjohnson.minimal.model.UserEntity;
+
+public class UserList  {
+	public static Set<User> listOfUsers = new HashSet<User>();
 }
