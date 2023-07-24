@@ -1,13 +1,46 @@
 package in.sesslynjohnson.minimal.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Set;
 import in.sesslynjohnson.minimal.interfaces.UserInterface;
 import in.sesslynjohnson.minimal.model.User;
+import in.sesslynjohnson.minimal.util.ConnectionUtil;
 
 public class UserDAO implements UserInterface {
 	@Override
-	public Set<User> findAll() {
-		Set<User> userList = UserList.listOfUsers;
+	public Set<User> findAll() throws RuntimeException{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Set<User> userList = new HashSet<>();
+		try {
+		    String query = "SELECT * FROM users WHERE isActive = 1";
+		    conn = ConnectionUtil.getConnection();
+		    ps = conn.prepareStatement(query);
+		    rs = ps.executeQuery();
+		    while(rs.next()) {
+		    	User user = new User();
+		    	user.setId(rs.getInt("id"));
+		    	user.setFirstName(rs.getString("first_name"));
+		    	user.setLastName(rs.getString("last_name"));
+		    	user.setEmail(rs.getString("email"));
+		    	user.setPassword(rs.getString("password"));
+		    	user.setActive(rs.getBoolean("is_active"));
+		    	userList.add(user);
+		    }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+		finally {
+			ConnectionUtil.close(conn, ps, rs);
+		}
 		return userList;
 	}
 
@@ -25,6 +58,12 @@ public class UserDAO implements UserInterface {
 		return userMatch;
 	}
 
+	@Override
+	public void create(User newUser) {
+		Set<User> arr = UserList.listOfUsers;
+		arr.add(newUser);
+	}
+	
 	@Override
 	public void update(User updatedUser) {
 		Set<User> userList = UserList.listOfUsers;
@@ -54,12 +93,7 @@ public class UserDAO implements UserInterface {
 		}
 	}
 
-	@Override
-	public void create(User newUser) {
-		// TODO Auto-generated method stub
-		Set<User> arr = UserList.listOfUsers;
-		arr.add(newUser);
-	}
+	
 
 	@Override
 	public void create() {

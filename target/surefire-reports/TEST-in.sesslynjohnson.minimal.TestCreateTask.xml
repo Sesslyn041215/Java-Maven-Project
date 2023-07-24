@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="in.sesslynjohnson.minimal.TestCreateUser" time="0.001" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="in.sesslynjohnson.minimal.TestCreateTask" time="0.063" tests="9" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,12 +58,27 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithEmailEmpty" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithPasswordNull" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithEmailNull" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithValidataInput" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithFirstNameEmpty" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithPasswordEmpty" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithInvalidataInput" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
-  <testcase name="in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithFirstNameNull" classname="in.sesslynjohnson.minimal.TestCreateUser" time="0"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithValidataInput" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.049">
+    <failure message="Unexpected exception thrown: in.sesslynjohnson.minimal.exception.ValidationException: Due date should be in the future" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception thrown: in.sesslynjohnson.minimal.exception.ValidationException: Due date should be in the future
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithValidataInput(TestCreateTask.java:23)
+Caused by: in.sesslynjohnson.minimal.exception.ValidationException: Due date should be in the future
+	at in.sesslynjohnson.minimal.validation.TaskValidator.Validate(TaskValidator.java:31)
+	at in.sesslynjohnson.minimal.service.TaskService.create(TaskService.java:22)
+	at in.sesslynjohnson.minimal.TestCreateTask.lambda$testCreateTaskWithValidataInput$0(TestCreateTask.java:24)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 16 more
+</failure>
+  </testcase>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithInvalidataInput" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.001"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithNameNull" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.001"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithNameEmpty" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithDueDateNull" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.001"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithDueDateEmpty" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.001"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithDueDateParseDate" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.001"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithDueDateInvalidDate" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.002"/>
+  <testcase name="in.sesslynjohnson.minimal.TestCreateTask.testCreateTaskWithDueDatePassedDate" classname="in.sesslynjohnson.minimal.TestCreateTask" time="0.001"/>
 </testsuite>
