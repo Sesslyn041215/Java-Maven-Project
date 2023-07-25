@@ -29,10 +29,10 @@ public class TaskService {
 		taskDao.create(newTask);
 	}
 
-	public void update(Task updateTask) throws Exception {
+	public void update(int id, Task updateTask) throws Exception {
 		TaskValidator.Validate(updateTask);
 		TaskDAO taskDao = new TaskDAO();
-		taskDao.update(updateTask);
+		taskDao.update(id, updateTask);
 	}
 
 	public void delete(int taskId) {

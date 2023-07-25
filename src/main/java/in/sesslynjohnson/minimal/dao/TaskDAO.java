@@ -28,7 +28,7 @@ public class TaskDAO implements TaskInterface {
 	}
 
 	@Override
-	public void update(Task updatedTask) {
+	public void update(int id, Task updatedTask) {
 		Set<Task> taskList = TaskList.listOfTasks;
 		for (Task task : taskList) {
 			if (task.getId() == updatedTask.getId()) {
@@ -59,23 +59,5 @@ public class TaskDAO implements TaskInterface {
 		}
 	}
 
-	@Override
-	public void create() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

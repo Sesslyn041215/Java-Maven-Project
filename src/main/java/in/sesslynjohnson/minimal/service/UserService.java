@@ -7,39 +7,27 @@ import in.sesslynjohnson.minimal.validation.UserValidator;
 
 public class UserService {
 	public Set<User> getAll() {
-
 		UserDAO userDao = new UserDAO();
-
 		Set<User> userList = userDao.findAll();
-
 		for (User user : userList) {
 			System.out.println(user);
 		}
-
 		return userList;
-
 	}
 
 	public void create(User newUser) throws Exception {
-		
 		UserValidator.Validate(newUser);
-		
 		UserDAO userDao = new UserDAO();
 		userDao.create(newUser);
-
 	}
 	
-	public void update() {
-		User updatedUser = new User();
-		updatedUser.setFirstName("Sesslyn");
-		updatedUser.setLastName("Johnson");
-		updatedUser.setEmail("sesslyn2004@gmail.com");
-		updatedUser.setId(15);
-		updatedUser.setPassword("Sess@1512");
-		updatedUser.setActive(true);
-		
+	public void update(int id, User updatedUser) {
+		updatedUser.setFirstName("Sess");
+		updatedUser.setLastName("Ruby");
+		updatedUser.setPassword("Pappu@1215");
+	
 		UserDAO userDao = new UserDAO();
-		userDao.update(updatedUser);
+		userDao.update(id, updatedUser);
 		
 	}
 	
@@ -48,11 +36,10 @@ public class UserService {
 		userDao.delete(userId);
 	}
 	
-//	public User findById(int userId) {
-//		UserDAO userDao = new UserDAO();
-//		userDao.findById(userId);
-//		
-//	}
+	public User findById(int userId) {
+		UserDAO userDao = new UserDAO();
+		return userDao.findById(userId);	
+	}
 //	
 //	public User findByEmail(String userEmail) {
 //		UserDAO userDao = new UserDAO();

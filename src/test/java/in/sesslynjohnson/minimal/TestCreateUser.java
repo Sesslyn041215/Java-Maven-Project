@@ -15,12 +15,10 @@ public class TestCreateUser {
     public void testCreateUserWithValidataInput(){
     	UserService userService = new UserService();
  		User newUser = new User();
- 		newUser.setId(1);
- 		newUser.setFirstName("Sesslyn");
- 		newUser.setLastName("Johnson");
- 		newUser.setEmail("sesslyn2004@gmail.com");
- 		newUser.setPassword("Sess@1512");
- 		newUser.setActive(true);
+ 		newUser.setFirstName("Johnson");
+ 		newUser.setLastName("Jeyakumar");
+ 		newUser.setEmail("johnson@gmail.com");
+ 		newUser.setPassword("Johnson@2303");
         assertDoesNotThrow(()->{
     	   userService.create(newUser);
         });	
