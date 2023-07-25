@@ -11,19 +11,18 @@ import in.sesslynjohnson.minimal.model.Task;
 import in.sesslynjohnson.minimal.service.TaskService;
 
 public class TestCreateTask {
-//	@Test
-//    public void testCreateTaskWithValidataInput() {
-//        TaskService taskService = new TaskService();
-//        Task newTask = new Task();
-//        newTask.setId(1);
-//        newTask.setDueDate("2023-07-10");
-//        newTask.setName("Practice");
-//        newTask.setActive(true);
-//
-//        assertDoesNotThrow(() -> {
-//            taskService.create(newTask);
-//        });
-//    }
+	@Test
+    public void testCreateTaskWithValidataInput() {
+        TaskService taskService = new TaskService();
+        Task newTask = new Task();
+        newTask.setDueDate("2023-08-26");
+        newTask.setName("Birthday Celebration");
+        newTask.setActive(true);
+
+        assertDoesNotThrow(() -> {
+            taskService.create(newTask);
+        });
+    }
 	@Test
 	public void testCreateTaskWithInvalidataInput() {
 		TaskService taskService = new TaskService();

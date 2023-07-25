@@ -15,6 +15,11 @@ public class UserService {
 		return userList;
 	}
 
+	public User findById(int userId) {
+		UserDAO userDao = new UserDAO();
+		return userDao.findById(userId);	
+	}
+	
 	public void create(User newUser) throws Exception {
 		UserValidator.Validate(newUser);
 		UserDAO userDao = new UserDAO();
@@ -22,13 +27,8 @@ public class UserService {
 	}
 	
 	public void update(int id, User updatedUser) {
-		updatedUser.setFirstName("Sess");
-		updatedUser.setLastName("Ruby");
-		updatedUser.setPassword("Pappu@1215");
-	
 		UserDAO userDao = new UserDAO();
-		userDao.update(id, updatedUser);
-		
+		userDao.update(id, updatedUser);	
 	}
 	
 	public void delete(int userId) {
@@ -36,13 +36,9 @@ public class UserService {
 		userDao.delete(userId);
 	}
 	
-	public User findById(int userId) {
+	public User findByEmail(String email) {
 		UserDAO userDao = new UserDAO();
-		return userDao.findById(userId);	
+		return userDao.findByEmail(email);
 	}
-//	
-//	public User findByEmail(String userEmail) {
-//		UserDAO userDao = new UserDAO();
-//		userDao.findByEmail(userEmail);
-//	}
+
 }

@@ -25,10 +25,23 @@ public class TestGetAllUser {
 	public void testUpdateUser() {
 		UserService userService = new UserService();
         User newUser = new User();
-		newUser.setFirstName("Sess");
-		newUser.setLastName("Jeru");
-		userService.update(1, newUser);
+		newUser.setFirstName("Ruby");
+		newUser.setLastName("Johnson");
+		userService.update(3, newUser);
 	}
+    
+    @Test
+   	public void testDeleteUser() {
+   		UserService userService = new UserService();
+        User newUser = new User();
+   		userService.delete(7);
+   	}
 	
+    @Test
+	public void getFindByEmailId() {
+		UserService userService = new UserService();
+		User arr =  userService.findByEmail("sesslyn@gmail.com");
+	    System.out.println(arr);
+	}
 }
 
