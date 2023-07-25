@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: in.sesslynjohnson.minimal.TestCreateUser
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in in.sesslynjohnson.minimal.TestCreateUser
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.353 s <<< FAILURE! - in in.sesslynjohnson.minimal.TestCreateUser
+in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithValidataInput()  Time elapsed: 2.347 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.RuntimeException: java.sql.SQLIntegrityConstraintViolationException: target: minimalistic.-.primary: vttablet: rpc error: code = AlreadyExists desc = Duplicate entry 'johnson@gmail.com' for key 'user.email' (errno 1062) (sqlstate 23000) (CallerID: 6gky6vf5byombao530ar): Sql: "insert into `user`(first_name, last_name, email, `password`) values (:vtg1 /* VARCHAR */, :vtg2 /* VARCHAR */, :vtg3 /* VARCHAR */, :vtg4 /* VARCHAR */)", BindVars: {REDACTED}
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at in.sesslynjohnson.minimal.TestCreateUser.testCreateUserWithValidataInput(TestCreateUser.java:22)
+Caused by: java.lang.RuntimeException: java.sql.SQLIntegrityConstraintViolationException: target: minimalistic.-.primary: vttablet: rpc error: code = AlreadyExists desc = Duplicate entry 'johnson@gmail.com' for key 'user.email' (errno 1062) (sqlstate 23000) (CallerID: 6gky6vf5byombao530ar): Sql: "insert into `user`(first_name, last_name, email, `password`) values (:vtg1 /* VARCHAR */, :vtg2 /* VARCHAR */, :vtg3 /* VARCHAR */, :vtg4 /* VARCHAR */)", BindVars: {REDACTED}
+	at in.sesslynjohnson.minimal.dao.UserDAO.create(UserDAO.java:95)
+	at in.sesslynjohnson.minimal.service.UserService.create(UserService.java:21)
+	at in.sesslynjohnson.minimal.TestCreateUser.lambda$testCreateUserWithValidataInput$0(TestCreateUser.java:23)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 16 more
+Caused by: java.sql.SQLIntegrityConstraintViolationException: target: minimalistic.-.primary: vttablet: rpc error: code = AlreadyExists desc = Duplicate entry 'johnson@gmail.com' for key 'user.email' (errno 1062) (sqlstate 23000) (CallerID: 6gky6vf5byombao530ar): Sql: "insert into `user`(first_name, last_name, email, `password`) values (:vtg1 /* VARCHAR */, :vtg2 /* VARCHAR */, :vtg3 /* VARCHAR */, :vtg4 /* VARCHAR */)", BindVars: {REDACTED}
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1098)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1046)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1371)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1031)
+	at in.sesslynjohnson.minimal.dao.UserDAO.create(UserDAO.java:89)
+	... 19 more
+

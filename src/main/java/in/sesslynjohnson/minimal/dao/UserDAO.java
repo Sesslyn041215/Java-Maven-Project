@@ -94,7 +94,7 @@ public class UserDAO implements UserInterface {
 		        System.out.println(e.getMessage());
 		        throw new RuntimeException(e);
 		    } finally {
-		        ConnectionUtil.close(conn, ps, null);
+		        ConnectionUtil.close(conn, ps);
 		    }
 	}
 
@@ -103,13 +103,12 @@ public class UserDAO implements UserInterface {
 		 Connection conn = null;
 		    PreparedStatement ps = null;
 		    try {
-		        String query = "UPDATE user SET first_name = ?, last_name = ?, password = ? WHERE is_active = 1 AND id = ?" ;
+		        String query = "UPDATE user SET first_name = ?, last_name = ? WHERE is_active = 1 AND id = ?" ;
 		        conn = ConnectionUtil.getConnection();
 		        ps = conn.prepareStatement(query);
 		        ps.setString(1, updatedUser.getFirstName());  
 		        ps.setString(2, updatedUser.getLastName());           
-		        ps.setString(3, updatedUser.getPassword());
-		        ps.setInt(4, updatedUser.getId());
+		        ps.setInt(3, updatedUser.getId());
 		        ps.executeUpdate(); 
 		        System.out.println("User has been updated successfully");
 		    } catch (SQLException e) {

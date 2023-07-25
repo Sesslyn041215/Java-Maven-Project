@@ -9,6 +9,7 @@ C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minima
 C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\interfaces\Base.java
 C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\App.java
 C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\dao\TaskDAO.java
+C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\util\ConnectionUtil.java
 C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\interfaces\UserInterface.java
 C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\interfaces\TaskInterface.java
 C:\software\eclipse_ide_workspace\minimal\src\main\java\in\sesslynjohnson\minimal\exception\ValidationException.java

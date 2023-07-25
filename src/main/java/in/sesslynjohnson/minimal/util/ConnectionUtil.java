@@ -6,18 +6,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class ConnectionUtil {
 	public static Connection getConnection() {
+		
+		Dotenv env = Dotenv.load();
+		String url = env.get("DATABASE_HOST");
+		String userName = env.get("DATABASE_USERNAME");
+		String password = env.get("DATABASE_PASSWORD");
+		
 		Connection connection = null;
-		String url = null;
-		String userName = null;
-		String password = null;
+		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			 connection = DriverManager.getConnection(
-					 "jdbc:mysql://aws.connect.psdb.cloud/minimalistic?sslMode=VERIFY_IDENTITY",
-					  "vw3dcz949xw8driln9jw",
-					  "pscale_pw_fkBgIi69Hh5k664G08mxfb1bSX6tvMjH04jX1CzSr3v");
+			connection = DriverManager.getConnection(url,userName,password);
 
 		} catch (Exception e) {
 			e.printStackTrace();
